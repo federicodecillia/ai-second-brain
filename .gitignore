@@ -1,0 +1,16 @@
+# Obsidian per-machine UI state
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/graph.json
+
+# Community plugin code (rebuilt from community-plugins.json)
+.obsidian/plugins/
+.obsidian/themes/
+.obsidian/hotkeys.json
+
+# OS
+.DS_Store
+.trash/
+
+# Agent local state
+.claude/
