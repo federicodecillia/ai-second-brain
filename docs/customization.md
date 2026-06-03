@@ -21,4 +21,4 @@ Write the procedure as plain prose in `AGENTS.md`, in the imperative, so any age
 Because it is prose, Claude, Codex, and Antigravity all execute it the same way.
 
 ## When to go pro
-The pro package adds a client CRM pipeline (status-driven Dataview), custom Claude skills, and MCP automations (calendar, email, payments). [Get in touch](#).
+The pro package adds a client CRM pipeline (status-driven Dataview), custom Claude skills, and MCP automations (calendar, email, payments). [Get in touch](https://www.linkedin.com/in/federicodecillia/).

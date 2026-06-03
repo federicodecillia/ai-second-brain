@@ -30,4 +30,4 @@ Open the vault in Claude Code, Codex, or Antigravity. Test: ask "What is the str
 Create today's note in `Daily/` and your first contact in `03_Resources/people/`. The vault is now live.
 
 ---
-Stuck, or want CRM workflows, custom agent skills, and a done-for-you setup? The pro package includes a live setup session. [Get in touch](#).
+Stuck, or want CRM workflows, custom agent skills, and a done-for-you setup? The pro package includes a live setup session. [Get in touch](https://www.linkedin.com/in/federicodecillia/).
