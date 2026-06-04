@@ -9,9 +9,9 @@ A second brain that any AI agent (Claude Code, Codex, Gemini/Antigravity) can op
 
 ## Quickstart
 ```
-git clone https://github.com/federicodecillia/ai-second-brain-starter.git my-second-brain && cd my-second-brain && ./setup.sh
+git clone https://github.com/federicodecillia/ai-second-brain.git my-second-brain && cd my-second-brain && ./setup.sh
 ```
-Then: install the two Obsidian plugins (`docs/plugin-setup.md`) and open the vault with your agent. Full guide: `docs/onboarding.md`.
+Then: install the two Obsidian plugins (`docs/plugin-setup.md`) and open the vault with your agent. Full guide: `docs/onboarding.md`. Want it on your phone? `docs/mobile-sync.md` (free, no Obsidian Sync).
 
 ## What's inside
 ```

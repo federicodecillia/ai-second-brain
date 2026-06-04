@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Guided personalization for ai-second-brain-starter.
+# Guided personalization for ai-second-brain.
 # Usage:
 #   ./setup.sh          full interactive (each question skippable with Enter)
 #   ./setup.sh --quick  skip all questions, leave placeholders, just fix symlinks
@@ -82,7 +82,7 @@ done
 # Detach safety: sever the link to the template so personal data is never pushed upstream.
 if ! $QUICK; then
   read -r -p 'Make this your own private repo? Removes the template git remote. [Y/n]: ' DETACH || true
-  if [[ "${DETACH:-Y}" =~ ^([Yy]|)$ ]]; then
+  if [[ "${DETACH:-Y}" == [Yy] ]]; then
     rm -rf .git
     git init -q
     echo "  detached: new empty git repo initialized."

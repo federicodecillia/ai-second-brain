@@ -23,6 +23,8 @@ See `02_Areas/_README.md` for more.
 ## 3. Set up Obsidian (2 min)
 Open the folder as a vault. Install Tasks + Dataview and enable core Templates (see `docs/plugin-setup.md`). Open `dashboard.md` and confirm the task views render (they show 0 tasks until you add some).
 
+Want the vault on your phone? `docs/mobile-sync.md` sets up free git-based sync to Obsidian iOS (no Obsidian Sync subscription).
+
 ## 4. Connect your agent (2 min)
 Open the vault in Claude Code, Codex, or Antigravity. Test: ask "What is the structure of this vault?" You should get a coherent PARA answer. See `docs/multi-agent-setup.md` for how the AGENTS.md / symlink setup works.
 

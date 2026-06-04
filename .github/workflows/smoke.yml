@@ -1,0 +1,17 @@
+name: smoke-test
+
+# Gate: simulate a brand-new user setting up the vault from a clean clone.
+# Fails (and blocks the merge) if setup.sh + the vault structure aren't usable.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: New-user setup smoke test
+        run: bash scripts/smoke-test.sh
