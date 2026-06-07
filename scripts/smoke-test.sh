@@ -45,6 +45,16 @@ grep -q "Freelance design studio" "$DEST/03_Resources/context/_owner.md" && ok "
 [ -f "$DEST/hub.md" ] && [ -f "$DEST/routines.md" ] && [ -f "$DEST/dashboard.md" ] && ok "key files (hub/routines/dashboard)" || no "key files"
 NT=$(ls "$DEST/03_Resources/templates/" 2>/dev/null | wc -l | tr -d ' ')
 [ "$NT" -ge 6 ] && ok "universal templates ($NT)" || no "universal templates ($NT, expected >=6)"
+[ -d "$DEST/01_Projects/example-project" ] && ok "example project present in 01_Projects" || no "example project missing"
+
+# Pre-push hygiene: no junk files committed to the template repo (runs on SRC, the
+# real repo, not the post-setup clone). Catches stray Obsidian/OS artifacts.
+JUNK=$(git -C "$SRC" ls-files 2>/dev/null | grep -iE \
+  '(^|/)(Senza nome|Untitled)\.|(^|/)\.DS_Store$|^[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$|(^|/)\.obsidian/(workspace|cache|graph\.json)' || true)
+[ -z "$JUNK" ] && ok "no junk files tracked" || no "junk files tracked: $(echo "$JUNK" | tr '\n' ' ')"
+
+# Point of point-3: dev/CI infra must NOT survive a real user's detach setup.
+[ ! -d "$DEST/scripts" ] && [ ! -d "$DEST/.github" ] && ok "DETACH: dev/CI infra removed from user vault" || no "DETACH: scripts/ or .github/ still in user vault"
 
 echo ""
 echo "setup.sh time: ${ELAPSED}s"

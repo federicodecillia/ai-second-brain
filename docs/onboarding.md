@@ -25,6 +25,8 @@ Open the folder as a vault. Install Tasks + Dataview and enable core Templates (
 
 Want the vault on your phone? `docs/mobile-sync.md` sets up free git-based sync to Obsidian iOS (no Obsidian Sync subscription).
 
+On macOS, want to capture via Siri/Apple Reminders and let your agent pull items into the vault? See `docs/reminders-capture.md`.
+
 ## 4. Connect your agent (2 min)
 Open the vault in Claude Code, Codex, or Antigravity. Test: ask "What is the structure of this vault?" You should get a coherent PARA answer. See `docs/multi-agent-setup.md` for how the AGENTS.md / symlink setup works.
 

@@ -79,15 +79,16 @@ for link in CLAUDE.md GEMINI.md; do
   fi
 done
 
-# Detach safety: sever the link to the template so personal data is never pushed upstream.
+# Detach safety: sever the link to the template so personal data is never pushed
+# upstream, and drop the template's dev/CI infra you don't need in your own vault.
 if ! $QUICK; then
-  read -r -p 'Make this your own private repo? Removes the template git remote. [Y/n]: ' DETACH || true
+  read -r -p 'Make this your own private repo? Removes the template git remote + dev/CI infra. [Y/n]: ' DETACH || true
   if [[ "${DETACH:-Y}" == [Yy] ]]; then
-    rm -rf .git
+    rm -rf .git scripts .github
     git init -q
-    echo "  detached: new empty git repo initialized."
+    echo "  detached: removed template dev/CI infra (scripts/, .github/) and initialized a fresh git repo."
   else
-    echo "  kept the template remote (you can pull upstream updates)."
+    echo "  kept the template remote + dev/CI infra (you can pull upstream updates and run the smoke test)."
   fi
 fi
 
