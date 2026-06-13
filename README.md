@@ -5,6 +5,8 @@
 
 **A second brain any AI agent can operate.** One canonical `AGENTS.md` rulebook: Claude Code, Codex, and Gemini/Antigravity all read the same rules and maintain the same vault. Built on PARA. Plain markdown + git, no database, no subscription. Ready in 15 minutes.
 
+Works as a **personal** brain or a shared **company brain** — a team, task assignment, and a lightweight sales pipeline. `setup.sh` asks which; the company setup is documented in [`docs/company-brain.md`](docs/company-brain.md).
+
 <!-- TODO: demo GIF here — 60s: clone → ./setup.sh → ask the agent "what should I do today?" -->
 
 ## What your agent can do with it
@@ -28,7 +30,7 @@ The agent follows the same written rules every time, whichever agent you use.
 ```
 git clone https://github.com/federicodecillia/ai-second-brain.git my-second-brain && cd my-second-brain && ./setup.sh
 ```
-`setup.sh` personalizes the vault (name, language, your areas), then detaches it into your own private repo. Then: install the two Obsidian plugins (`docs/plugin-setup.md`) and open the vault with your agent. Full guide: `docs/onboarding.md`.
+`setup.sh` asks **personal or company/team**, personalizes the vault (name(s), language, your areas), detaches it into your own repo, and can publish it to GitHub for you (`gh repo create`, private by default — personal or org). Then: install the two Obsidian plugins (`docs/plugin-setup.md`) and open the vault with your agent. Full guide: `docs/onboarding.md` · company brain: `docs/company-brain.md`.
 
 On your phone too: `docs/mobile-sync.md` syncs the vault to Obsidian iOS via git, free (no Obsidian Sync subscription). Capture via Siri/Apple Reminders: `docs/reminders-capture.md`.
 
