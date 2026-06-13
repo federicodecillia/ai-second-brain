@@ -20,5 +20,8 @@ Write the procedure as plain prose in `AGENTS.md`, in the imperative, so any age
 
 Because it is prose, Claude, Codex, and Antigravity all execute it the same way.
 
+## Run it as a company brain
+Team setup — company identity, per-person task assignment, and a lightweight sales pipeline (status-driven Dataview) — ships in the box. Pick **company/team** in `./setup.sh`, or follow `docs/company-brain.md`.
+
 ## When to go pro
-The pro package adds a client CRM pipeline (status-driven Dataview), custom Claude skills, and MCP automations (calendar, email, payments). [Get in touch](https://www.linkedin.com/in/federicodecillia/).
+The pro package adds custom Claude skills, MCP automations (calendar, email, payments), and a done-for-you setup session. [Get in touch](https://www.linkedin.com/in/federicodecillia/).

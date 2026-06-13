@@ -11,4 +11,10 @@ This vault needs only a minimal set of Obsidian plugins.
 
 Install: Settings -> Community plugins -> Browse -> search the name -> Install -> Enable.
 
+> **Cloning a vault that already lists these plugins?** When you open a vault whose `.obsidian/community-plugins.json` names Tasks and Dataview, Obsidian downloads them for you — but does **not** turn them on. You still have to **enable** them: Settings -> Community plugins -> toggle **Tasks** and **Dataview** on (and make sure Restricted Mode is off).
+
+## Troubleshooting
+- **`dashboard.md` / `pipeline.md` show raw ```` ```tasks ```` / ```` ```dataview ```` code blocks instead of tables/lists** → the plugin is installed but **not enabled**. Settings -> Community plugins -> toggle Tasks / Dataview on.
+- **Views are empty** → that's normal until you have matching notes (tasks with a `📅`/tag, or sales notes with a `status` field).
+
 Everything else is optional. Add what you need; the vault works with just these.
