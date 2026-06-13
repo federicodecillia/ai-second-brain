@@ -81,6 +81,7 @@ Raccolti durante questo primo uso reale; da applicare al template su branch dedi
 - **#3 Pipeline leggera** → ora inclusa in team mode (status + `pipeline.md` Dataview); reinquadrato il "pro" in `docs/customization.md`.
 - **#4 `_owner.md`** → in team mode diventa `_company.md` + `context/team/`.
 - **Verifica:** `scripts/smoke-test.sh` esteso con un run team; 28/28 PASS (personal + team).
+- **#6 Plugin installati ma non abilitati** → aprendo il vault, Obsidian *installa* Tasks/Dataview da `community-plugins.json` ma **non li abilita**; le viste appaiono come code-block grezzi finché non li accendi a mano. Scoperto verificando il rendering di flylabs-brain in Obsidian. Risolto: nota + troubleshooting in `docs/plugin-setup.md`.
 
 ## Fuori scope (YAGNI)
 
