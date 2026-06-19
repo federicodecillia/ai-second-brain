@@ -1,6 +1,7 @@
 # Operating Manual — {{owner_name}}'s Second Brain
 
 > Read this file before operating in the vault. Keep it under 100 lines: details live in each project's `references/`.
+> Running this as a shared **company brain** (a team, task assignment, a sales pipeline)? See `docs/company-brain.md`.
 
 ## Vault identity
 - **Owner:** {{owner_name}}
