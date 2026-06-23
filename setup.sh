@@ -178,6 +178,7 @@ CO
 
 ## Structure (PARA)
 ```
+00_Inbox/      drop zone: raw captures waiting to be filed (maintenance empties it)
 01_Projects/   client engagements WITH a deadline + internal initiatives
 02_Areas/      ongoing responsibilities (sales, + others as they get real content)
 03_Resources/  reusable reference
@@ -186,13 +187,13 @@ CO
   context/     _company.md (company identity) + team/ (one profile per person)
 09_Archive/    completed / inactive / historical
 Daily/         daily notes YYYY-MM-DD (they live HERE, not in root)
-hub.md  routines.md  dashboard.md (task cockpit)  pipeline.md (sales cockpit)  MEMORY.md  index.md (MOC)
+hub.md  routines.md  dashboard.md (task cockpit)  pipeline.md (sales cockpit)  maintenance.md (autopilot)  digest.md  MEMORY.md  index.md (MOC)
 ```
 Anti-overcomplication: do NOT create empty folders/files. An area grows only with real content.
 Naming: folders snake_case, notes kebab-case. Stay consistent.
 
 ## Capture workflow
-When a team member pastes or dictates raw info (a note, a meeting, an idea), file it into PARA:
+When a team member pastes or dictates raw info (a note, a meeting, an idea), file it into PARA. Anything dropped in `00_Inbox/` without instructions is raw capture to be filed the same way (and the inbox emptied), on demand or by the scheduled run.
 1. **Pick the bucket.** Deadline + defined outcome -> `01_Projects/`. Ongoing responsibility -> `02_Areas/`. Reusable reference -> `03_Resources/`. A person -> `03_Resources/people/<relationship>/`. A quote -> `02_Areas/sales/quotes/`.
 2. **Update status/fields** in frontmatter (sales notes carry a `status:` — see Pipeline).
 3. **Log dated entries** for anything conversational: `### [YYYY-MM-DD] <channel> | <summary>` + bullets.
@@ -219,6 +220,9 @@ Read `03_Resources/context/_company.md` + `MEMORY.md` + `03_Resources/context/te
 
 ## Output style
 {{STYLE_PREFS}}
+
+## Maintenance (autopilot)
+`maintenance.md` keeps the brain compounding: empty `00_Inbox/`, append a weekly digest to `digest.md`, run a health check (orphans, stale notes, broken links). Run on demand ("run maintenance.md") or scheduled (`docs/automation.md`). Scheduled = unattended, so keep its access scoped (write to the vault; read-only for any connected service).
 
 ## Agent capabilities
 Read by Claude Code, OpenAI Codex, Google Antigravity and any agent following the agents.md standard. Claude Code skills go in `.claude/skills/`; describe their logic in prose here so other agents can run it manually.
@@ -457,7 +461,10 @@ echo "  2. Install Tasks + Dataview, enable core Templates (docs/plugin-setup.md
 if $TEAM; then
   echo "  3. Open the vault with your agent and ask: 'What is the structure of this vault?'"
   echo "  4. Company brain: fill 03_Resources/context/_company.md + context/team/*. See docs/company-brain.md."
+  echo "  5. Turn on autopilot: schedule maintenance.md (weekly inbox + digest + health check). See docs/automation.md."
 else
   echo "  3. Open the vault with your agent and ask: 'What is the structure of this vault?'"
+  echo "  4. Turn on autopilot: schedule maintenance.md (weekly inbox + digest + health check). See docs/automation.md."
 fi
+echo "  Tip: for a richer profile, let your agent interview you instead of the form (see docs/onboarding.md)."
 $QUICK && echo "  (re-run ./setup.sh anytime to fill the remaining {{placeholders}}.)"

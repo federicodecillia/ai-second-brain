@@ -13,7 +13,7 @@ This vault works for one person out of the box. It also runs as a **shared compa
 | Dashboard | one set of views | **per-person** sections + unassigned |
 | Sales | — | lightweight pipeline: `status` field + `pipeline.md` |
 
-Everything else (PARA, capture workflow, daily notes, people, templates) is identical.
+Everything else (PARA, capture workflow, daily notes, people, templates, and the `maintenance.md` autopilot) is identical.
 
 ## 1. Identity: company + people
 

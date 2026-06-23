@@ -18,8 +18,9 @@ Once set up, you talk to your vault in plain language:
 - *"Add a task: send the proposal to Marco by Friday, high priority"* → a properly tagged task line in the right file, visible in the dashboard
 - *"What do I know about ACME Corp?"* → pulls the note, linked people, and past dated entries
 - *"Start a project for the website redesign, deadline end of September"* → project folder with MOC + tasks, linked to its area
+- *(Sunday morning, on a schedule)* → it empties your inbox, writes a digest of the week, and flags stale notes, on its own
 
-The agent follows the same written rules every time, whichever agent you use.
+The agent follows the same written rules every time, whichever agent you use. That last one is the point: schedule `maintenance.md` and the brain maintains itself, getting sharper every week instead of going stale. See [docs/automation.md](docs/automation.md).
 
 ## Why this exists
 - **PARA structure** ([Tiago Forte](https://fortelabs.com/blog/para/)): organize by actionability, not topic.
@@ -28,14 +29,14 @@ The agent follows the same written rules every time, whichever agent you use.
 
 ## Get started
 
-Four steps: clone and personalize, install two Obsidian plugins, open the vault with your agent, and (optionally) put it on your phone. About 15 minutes total, or 2 for a bare working vault. Each step links to a deeper guide if you want it.
+Clone and personalize, install two Obsidian plugins, open the vault with your agent, then optionally turn on autopilot and put it on your phone. About 15 minutes total, or 2 for a bare working vault. Each step links to a deeper guide if you want it.
 
 ### 1. Clone and personalize it (2 min)
 ```
 git clone https://github.com/federicodecillia/ai-second-brain.git my-second-brain && cd my-second-brain && ./setup.sh
 ```
 `setup.sh` asks **personal or company/team**, fills in your name(s), language and areas, detaches the vault into your own fresh git repo, and (if you want) publishes it to GitHub for you (`gh repo create`, private by default).
-In a hurry? `./setup.sh --quick` skips every question and gives you a working vault now; re-run it anytime to personalize. Prefer to edit by hand instead? It is just find-and-replace, walked through in [docs/onboarding.md](docs/onboarding.md).
+In a hurry? `./setup.sh --quick` skips every question and gives you a working vault now; re-run it anytime to personalize. Want richer context? Skip the form and let your agent **interview you** instead — both paths are in [docs/onboarding.md](docs/onboarding.md).
 
 ### 2. Install the Obsidian plugins (2 min)
 Open the folder as a vault (Obsidian → *Open folder as vault*). Then turn on two community plugins and one core plugin:
@@ -48,7 +49,10 @@ A freshly cloned vault downloads these but does **not** auto-enable them, so fli
 ### 3. Open it with your agent (1 min)
 Open the vault in Claude Code, Codex, or Gemini / Antigravity and ask *"What is the structure of this vault?"*. You should get a clean PARA answer. From there you just talk to it (see the examples above). How one `AGENTS.md` keeps all three agents in sync: [docs/multi-agent-setup.md](docs/multi-agent-setup.md).
 
-### 4. Put it on your phone (optional, 5 min)
+### 4. Turn on autopilot (optional, 2 min)
+Drop anything into `00_Inbox/` and let a scheduled run sort it. Tell your agent *"set up a scheduled task that runs maintenance.md every Sunday at 08:00"* and it files the inbox, writes a weekly digest to `digest.md`, and health-checks the vault, unattended. Cadence, a local-cron path for any agent, and the read-only safety rule: [docs/automation.md](docs/automation.md).
+
+### 5. Put it on your phone (optional, 5 min)
 Sync to Obsidian on iOS over the **same git backbone**, free, no Obsidian Sync subscription: [docs/mobile-sync.md](docs/mobile-sync.md). On macOS you can also capture by voice ("Hey Siri, remind me to…") and have your agent file those items into the vault: [docs/reminders-capture.md](docs/reminders-capture.md).
 
 ## Documentation
@@ -61,15 +65,16 @@ Start with **onboarding**; reach for the rest only when you need them.
 | [multi-agent-setup.md](docs/multi-agent-setup.md) | How the single `AGENTS.md` + symlinks keep Claude, Codex and Gemini in sync. |
 | [mobile-sync.md](docs/mobile-sync.md) | Free iOS sync over git: token setup, the 403 fix, anti-conflict rule. |
 | [reminders-capture.md](docs/reminders-capture.md) | Capture from Siri / Apple Reminders on macOS and pull items into the vault. |
+| [automation.md](docs/automation.md) | Schedule `maintenance.md` so the brain files its inbox and writes a digest on its own. |
 | [company-brain.md](docs/company-brain.md) | Run it as a shared team brain: task assignment + a lightweight sales pipeline. |
 | [customization.md](docs/customization.md) | Adapt areas and templates to your field; when to go pro. |
 | [philosophy.md](docs/philosophy.md) | The PARA + Karpathy ideas the vault is built on. |
 
 ## What's inside
 ```
-01_Projects/  02_Areas/  03_Resources/{templates,people,context}  09_Archive/  Daily/
+00_Inbox/  01_Projects/  02_Areas/  03_Resources/{templates,people,context}  09_Archive/  Daily/
 AGENTS.md (+CLAUDE.md/GEMINI.md)  hub.md  routines.md  dashboard.md  index.md  MEMORY.md
-setup.sh  docs/
+maintenance.md (autopilot routine)  digest.md (its output)  setup.sh  docs/
 ```
 Plus an example project showing the conventions, six universal note templates, and a smoke-tested setup (CI runs the full new-user flow on every change).
 

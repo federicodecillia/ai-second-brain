@@ -11,7 +11,7 @@ The AI-maintained, compounding-knowledge layer. Instead of an agent re-reading r
 ## Three principles this vault applies
 1. **Three layers** (after Karpathy): immutable raw sources, AI-maintained derived notes, and agent ownership defined in `AGENTS.md`. This is also why framework files and your personal data stay cleanly separated.
 2. **Append-and-review**: capture fast in `Daily/`, then periodically review and rescue what matters upward. "One text note ftw" scales into a vault.
-3. **Agent health checks**: the agent maintains consistency and link hygiene (see `routines.md`), the way Karpathy's wiki runs consistency checks.
+3. **The brain maintains itself**: a scheduled routine (`maintenance.md`) files new captures from `00_Inbox/`, writes a digest, and runs consistency + link-hygiene checks — the way Karpathy's wiki runs consistency checks. This is what makes the vault compound instead of rot. See `docs/automation.md`.
 
 ## Sources
 - Karpathy, "The Append and Review Note" — https://karpathy.bearblog.dev/the-append-and-review-note/
