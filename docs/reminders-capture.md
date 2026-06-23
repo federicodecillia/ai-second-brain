@@ -2,7 +2,7 @@
 
 Use the iOS/macOS **Reminders** app as a quick capture inbox (dictate to Siri, jot on the phone), then have your agent pull those items into the vault and tick them off. One-directional: Reminders is the scratchpad, the vault is the source of truth.
 
-This is the **capture** half. How you *route* each item (which note, which task file) is your own workflow — keep that logic in a personal skill/prompt, not here.
+This is the **capture** half. The simplest route: have your agent drop each pulled item into `00_Inbox/` and let the scheduled `maintenance.md` file it into PARA for you (see `docs/automation.md`). Two different "inboxes", don't confuse them: the macOS Reminders list named *Inbox* is the phone-side scratchpad; `00_Inbox/` is the vault folder it feeds. Want custom routing instead? Keep that logic in a personal skill/prompt.
 
 ## Why AppleScript, not a CLI
 

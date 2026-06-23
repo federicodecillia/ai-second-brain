@@ -11,6 +11,7 @@ MOC / map of the whole vault (PARA). Read this to navigate. Update it as you add
 - [[MEMORY]] — global strategic memory
 - [[dashboard]] — task cockpit (Tasks views)
 - [[hub]] — cross-project tasks · [[routines]] — recurring tasks
+- [[maintenance]] — autopilot routine · [[digest]] — its weekly output · `00_Inbox/` — drop zone
 
 ## 01_Projects — initiatives with a deadline
 > Add your projects here as you create them.

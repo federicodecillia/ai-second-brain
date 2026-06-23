@@ -12,6 +12,7 @@
 
 ## Structure (PARA)
 ```
+00_Inbox/      drop zone: raw captures waiting to be filed (maintenance empties it)
 01_Projects/   initiatives WITH a deadline
 02_Areas/      ongoing responsibilities (no number prefixes)
 03_Resources/  reusable reference
@@ -20,13 +21,13 @@
   context/     owner identity (_owner.md)
 09_Archive/    completed / inactive / historical
 Daily/         daily notes YYYY-MM-DD (they live HERE, not in root)
-hub.md         tasks without a project · routines.md recurring · dashboard.md (Tasks view) · MEMORY.md · index.md (MOC)
+hub.md tasks without a project · routines.md recurring · dashboard.md (Tasks view) · maintenance.md (autopilot) · digest.md (its output) · MEMORY.md · index.md (MOC)
 ```
 Anti-overcomplication rule: do NOT create empty folders/files. An area grows only with real content.
 Naming rule: pick one folder style (snake_case or kebab-case) and stay consistent; notes use kebab-case.
 
 ## Capture workflow
-When the owner pastes or dictates raw information (a note, a meeting, an idea), file it into PARA:
+When the owner pastes or dictates raw information (a note, a meeting, an idea), file it into PARA. Anything dropped in `00_Inbox/` without instructions is raw capture to be filed the same way (and the inbox emptied) — on demand or by the scheduled run.
 1. **Pick the bucket.** Deadline + defined outcome -> `01_Projects/`. Ongoing responsibility -> the right folder in `02_Areas/`. Reusable reference -> `03_Resources/`. A person -> `03_Resources/people/`.
 2. **Update status/fields** in the note's frontmatter when relevant.
 3. **Log dated entries** for anything conversational: `### [YYYY-MM-DD] <channel> | <summary>` + bullets.
@@ -48,6 +49,9 @@ Read `03_Resources/context/_owner.md` (values, decision criteria, goals) + `MEMO
 ## Output style
 {{style_prefs}}
 Example: concise, direct, no filler. Bullets/headers for complex output, plain text for short answers.
+
+## Maintenance (autopilot)
+`maintenance.md` is the routine that keeps the brain compounding: empty `00_Inbox/`, append a weekly digest to `digest.md`, run a health check (orphans, stale notes, broken links). Run it on demand ("run maintenance.md") or on a schedule (`docs/automation.md`). On a schedule it runs unattended, so keep its access scoped (write to the vault; read-only for any connected service).
 
 ## Agent capabilities
 This file is read by Claude Code, OpenAI Codex, Google Antigravity and any agent that follows the agents.md standard. The rules above apply to all of them.
