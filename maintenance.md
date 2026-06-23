@@ -18,12 +18,16 @@ Default cadence: **weekly**. Pick the day/time in setup (default Sunday 08:00). 
 
 Do these in order. Follow the capture rules in `AGENTS.md`. **Never invent data** — if something is ambiguous, leave it and note it in the digest under "Needs attention".
 
+### 0. (Optional) Pull in phone captures
+If you capture to Apple Reminders / Siri (see `docs/reminders-capture.md`), first drain those into `00_Inbox/appunti.md` so nothing caught on the phone is left out. On an **unattended scheduled run** this may lack Reminders access — if so, skip it; the items get pulled on the next interactive run. Don't error out.
+
 ### 1. Empty the inbox
 For each item in `00_Inbox/`:
 - File it into the right PARA bucket (project / area / resource / person) per the capture workflow in `AGENTS.md`.
 - Add the `[[links]]` that connect it to existing notes (no orphans).
 - Add a line to today's `Daily/` note describing what landed where.
 - Remove it from `00_Inbox/` once filed. If you genuinely can't place it, leave it and list it in the digest.
+- `appunti.md` is a **persistent buffer**: file each line, then clear the lines but keep the file and its header. Never delete `appunti.md` or `_README.md`.
 
 ### 2. Review the week, then write the digest
 First **rescue upward**: if something important is sitting only in this week's `Daily/` notes, promote it into its project or area note (`Daily/` is a scratchpad, not a final home — this is the append-and-review habit).
