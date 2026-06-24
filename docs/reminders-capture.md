@@ -16,13 +16,23 @@ The fix is to talk to **Reminders.app via AppleScript** (`osascript`). That path
 
 ## One-time permission setup (per machine)
 
-1. Run any read (below). macOS shows **"<App> wants access to Reminders"** → allow.
-2. If it was denied earlier and the prompt no longer appears, reset and retry:
-   ```
-   tccutil reset Reminders <host-app-bundle-id>
-   ```
-   (For Claude desktop the bundle id is `com.anthropic.claudefordesktop`. Find any app's id with `osascript -e 'id of app "AppName"'`.)
-3. **Note:** System Settings → Privacy & Security → **Reminders** has no `+` button. Apps appear there *only after* they request access, so you must trigger the prompt as above — you cannot add the app by hand.
+The Reminders permission is granted to **whichever app launches the script**, not to "your agent" in the abstract. So the app you need to authorize depends on how you run the pull:
+
+- **Inside the Claude desktop app** → the grant lands on `com.anthropic.claudefordesktop`.
+- **`claude -p` (or any `osascript`) from a terminal** → the grant lands on your **terminal app** (Terminal, iTerm, the integrated terminal in VS Code, *and* the integrated terminal inside the Claude desktop app are each separate). A fresh terminal has no access, so the pull silently fails until you grant it.
+
+Grant it **once per launching app**: run a read directly in that app and click **Allow** on the prompt.
+
+```bash
+osascript -e 'tell application "Reminders" to get name of every list'
+```
+
+macOS shows **"<App> wants access to Reminders"** → allow. From then on, anything that app launches (including `claude -p`) inherits the access.
+
+Notes:
+- If it was denied earlier and the prompt no longer appears, reset and retry: `tccutil reset Reminders <bundle-id>` (find an app's id with `osascript -e 'id of app "AppName"'`).
+- System Settings → Privacy & Security → **Reminders** has no `+` button. Apps appear there *only after* they request access, so you must trigger the prompt as above — you cannot add the app by hand.
+- An **unattended scheduled run** (launchd/cron) is launched by the scheduler, not a granted app, so it can't get Reminders access. Let it skip the pull (see `maintenance.md` step 0); the items get pulled on your next interactive run.
 
 ## Read the inbox
 
