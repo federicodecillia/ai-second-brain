@@ -16,18 +16,21 @@ The fix is to talk to **Reminders.app via AppleScript** (`osascript`). That path
 
 ## One-time permission setup (per machine)
 
-The Reminders permission is granted to **whichever app launches the script**, not to "your agent" in the abstract. So the app you need to authorize depends on how you run the pull:
+The Reminders permission (TCC) is attached to the **process that actually issues the AppleScript**, and that has a subtle consequence: the grant does *not* automatically flow to a child process that runs `osascript` on your behalf.
 
-- **Inside the Claude desktop app** → the grant lands on `com.anthropic.claudefordesktop`.
-- **`claude -p` (or any `osascript`) from a terminal** → the grant lands on your **terminal app** (Terminal, iTerm, the integrated terminal in VS Code, *and* the integrated terminal inside the Claude desktop app are each separate). A fresh terminal has no access, so the pull silently fails until you grant it.
+- **An agent inside the Claude desktop app** issues the AppleScript as the host app `com.anthropic.claudefordesktop`. Grant that app once and the agent's pull works.
+- **`osascript` you type yourself in a terminal** is issued as your terminal app (Terminal, iTerm, VS Code's integrated terminal — each separate). Grant it once and your own commands work.
+- **An agent you launch headless from a terminal (`claude -p`)** issues the AppleScript under *its own* sandboxed process, **not** under your terminal. So granting the terminal does **not** let `claude -p` reach Reminders, and a headless run can't show a consent prompt to fix it. The pull just fails.
 
-Grant it **once per launching app**: run a read directly in that app and click **Allow** on the prompt.
+Grant whichever app will issue the script, once, by running a read **directly in it** and clicking **Allow**:
 
 ```bash
 osascript -e 'tell application "Reminders" to get name of every list'
 ```
 
-macOS shows **"<App> wants access to Reminders"** → allow. From then on, anything that app launches (including `claude -p`) inherits the access.
+macOS shows **"<App> wants access to Reminders"** → allow.
+
+**Practical upshot:** do the Reminders pull where the grant applies — either from inside the desktop app (agent inherits the app grant), or as a plain `osascript` step you run yourself in the granted terminal *before* handing off to the agent. Don't expect a headless `claude -p` to pull Reminders just because the terminal is granted; wrap the pull as a direct `osascript` step instead.
 
 Notes:
 - If it was denied earlier and the prompt no longer appears, reset and retry: `tccutil reset Reminders <bundle-id>` (find an app's id with `osascript -e 'id of app "AppName"'`).
