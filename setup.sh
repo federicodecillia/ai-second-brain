@@ -186,7 +186,7 @@ CO
   people/      contacts by relationship (clients/ prospects/ collaborators/ suppliers/)
   context/     _company.md (company identity) + team/ (one profile per person)
 09_Archive/    completed / inactive / historical
-Daily/         daily notes YYYY-MM-DD (they live HERE, not in root)
+Daily/         daily log YYYY-MM-DD (they live HERE, not in root): one line per thing that happened, read by the maintenance run and by the templates' activity views
 hub.md  routines.md  dashboard.md (task cockpit)  pipeline.md (sales cockpit)  maintenance.md (autopilot)  digest.md  MEMORY.md  index.md (MOC)
 ```
 Anti-overcomplication: do NOT create empty folders/files. An area grows only with real content.
@@ -197,7 +197,7 @@ When a team member pastes or dictates raw info (a note, a meeting, an idea), fil
 1. **Pick the bucket.** Deadline + defined outcome -> `01_Projects/`. Ongoing responsibility -> `02_Areas/`. Reusable reference -> `03_Resources/`. A person -> `03_Resources/people/<relationship>/`. A quote -> `02_Areas/sales/quotes/`.
 2. **Update status/fields** in frontmatter (sales notes carry a `status:` — see Pipeline).
 3. **Log dated entries** for anything conversational: `### [YYYY-MM-DD] <channel> | <summary>` + bullets.
-4. **Add a line to today's `Daily/`** linking what changed.
+4. **Add ONE line to today's `Daily/`**: `[[links]]` to what you touched + what changed. Keep it to a line — the substance belongs in the note you just wrote, the Daily only records *when*. The links are load-bearing: `project.md` and `person.md` build their "Recent activity" / "Interactions" views from them (`LIST FROM "Daily"`), and the maintenance run reads the week's lines to write the digest.
 5. **Never invent data.** If unsure, leave blank and add `> TODO: ask the team ___`. Never invent amounts on a quote.
 
 ## Tasks & assignment

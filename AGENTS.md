@@ -20,7 +20,7 @@
   people/      contacts (by relationship type)
   context/     owner identity (_owner.md)
 09_Archive/    completed / inactive / historical
-Daily/         daily notes YYYY-MM-DD (they live HERE, not in root)
+Daily/         daily log YYYY-MM-DD (they live HERE, not in root): one line per thing that happened, read by the maintenance run and by the templates' activity views
 hub.md tasks without a project · routines.md recurring · dashboard.md (Tasks view) · maintenance.md (autopilot) · digest.md (its output) · MEMORY.md · index.md (MOC)
 ```
 Anti-overcomplication rule: do NOT create empty folders/files. An area grows only with real content.
@@ -31,7 +31,7 @@ When the owner pastes or dictates raw information (a note, a meeting, an idea), 
 1. **Pick the bucket.** Deadline + defined outcome -> `01_Projects/`. Ongoing responsibility -> the right folder in `02_Areas/`. Reusable reference -> `03_Resources/`. A person -> `03_Resources/people/`.
 2. **Update status/fields** in the note's frontmatter when relevant.
 3. **Log dated entries** for anything conversational: `### [YYYY-MM-DD] <channel> | <summary>` + bullets.
-4. **Add a line to today's `Daily/`** linking what changed.
+4. **Add ONE line to today's `Daily/`**: `[[links]]` to what you touched + what changed. Keep it to a line — the substance belongs in the note you just wrote, the Daily only records *when*. The links are load-bearing: `project.md` and `person.md` build their "Recent activity" / "Interactions" views from them (`LIST FROM "Daily"`), and the maintenance run reads the week's lines to write the digest.
 5. **Never invent data.** If unsure, leave it blank and add `> TODO: ask {{owner_name}} ___`.
 Example: pasted meeting notes about an ongoing client -> update that area note, append a dated log entry, link it from today's Daily.
 
