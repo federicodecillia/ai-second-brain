@@ -53,8 +53,8 @@ Open the vault in Claude Code, Codex, or Gemini / Antigravity and ask *"What is 
 ### 4. Turn on autopilot (optional, 2 min)
 Drop anything into `00_Inbox/` and let a scheduled run sort it. Tell your agent *"set up a scheduled task that runs maintenance.md every Sunday at 08:00"* and it files the inbox, writes a weekly digest to `digest.md`, and health-checks the vault, unattended. Cadence, a local-cron path for any agent, and the read-only safety rule: [docs/automation.md](docs/automation.md).
 
-### 5. Put it on your phone (optional, 5 min)
-Sync to Obsidian on iOS over the **same git backbone**, free, no Obsidian Sync subscription: [docs/mobile-sync.md](docs/mobile-sync.md). On macOS you can also capture by voice ("Hey Siri, remind me to…") and have your agent file those items into the vault: [docs/reminders-capture.md](docs/reminders-capture.md).
+### 5. Back it up, and put it on your phone (optional, 5 min)
+Push the vault to a **private** GitHub repo and let the Obsidian Git plugin commit and sync it every few minutes: backup and version history with nothing to remember. The same backbone then syncs to Obsidian on iOS for free, no Obsidian Sync subscription. Both halves, including the access token GitHub now requires instead of a password: [docs/mobile-sync.md](docs/mobile-sync.md). On macOS you can also capture by voice ("Hey Siri, remind me to…") and have your agent file those items into the vault: [docs/reminders-capture.md](docs/reminders-capture.md).
 
 ## Documentation
 Start with **onboarding**; reach for the rest only when you need them.
