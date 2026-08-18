@@ -404,12 +404,22 @@ if ! $QUICK; then
   fi
 fi
 
-# Fix symlinks if the clone materialized them as plain files (Windows edge case).
+# Fix the agent aliases if the clone materialized them as plain files. On Windows a
+# git clone writes CLAUDE.md as a one-line text file containing "AGENTS.md", and many
+# Windows filesystems refuse symlinks outright, so fall back to a real copy rather
+# than aborting the whole setup. Never remove the existing file until the new one is
+# ready: build it under a temp name and move it into place.
 for link in CLAUDE.md GEMINI.md; do
-  if [[ ! -L "$link" ]]; then
-    rm -f "$link"
-    ln -s AGENTS.md "$link"
-    echo "  fixed symlink: $link -> AGENTS.md"
+  [[ -L "$link" ]] && continue
+  tmp="$link.new$$"
+  if ln -s AGENTS.md "$tmp" 2>/dev/null && [[ -L "$tmp" ]]; then
+    mv -f "$tmp" "$link"
+    echo "  fixed alias: $link -> AGENTS.md (symlink)"
+  else
+    rm -f "$tmp"
+    cp -f "$AGENTS" "$link"
+    echo "  fixed alias: $link is a COPY of AGENTS.md (no symlinks on this filesystem)."
+    echo "               If you edit AGENTS.md, tell your agent to copy it over $link again."
   fi
 done
 

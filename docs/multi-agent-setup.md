@@ -26,9 +26,13 @@ ln -s AGENTS.md GEMINI.md
 (This repo already ships set up this way.)
 
 ## Verify
-- `readlink CLAUDE.md` returns `AGENTS.md`; same for `GEMINI.md`
+- `readlink CLAUDE.md` returns `AGENTS.md`; same for `GEMINI.md` (on Windows without symlinks, `head -1 CLAUDE.md` shows the AGENTS.md title instead)
 - Open each agent and ask "What is the structure of this vault?" — answers should match
 
+## On Windows
+A git clone on Windows does not create symlinks: `CLAUDE.md` and `GEMINI.md` arrive as one-line text files containing `AGENTS.md`, and many Windows filesystems refuse symlinks outright. `setup.sh` handles both cases — it recreates the symlink where the filesystem allows it, and otherwise makes `CLAUDE.md` / `GEMINI.md` **real copies** of `AGENTS.md` and tells you so.
+
+If you got copies, they can drift: after editing `AGENTS.md`, ask your agent to copy it over the two aliases again. Codex reads `AGENTS.md` directly, so it is unaffected either way.
+
 ## Limits
-- Symlinks are not clean on Windows: use Git Bash / WSL, or copy the files and keep them in sync.
 - Claude skills are a Claude-only accelerator; other agents run the same logic from the prose in `AGENTS.md`.
