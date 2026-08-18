@@ -5,9 +5,31 @@ Sync this vault to Obsidian iOS using the **same git backbone** as your desktop.
 ## How it works
 Your phone becomes a **second clone** of the same private GitHub repo. Single source of truth: GitHub. Both devices pull/push to it via the [Obsidian Git](https://github.com/Vinzent03/obsidian-git) community plugin.
 
-> Prerequisite: your vault is already a git repo with a private GitHub remote. If not, do that on desktop first (`git init`, create a private repo, push).
+> Prerequisite: your vault is already a git repo with a **private** GitHub remote. `setup.sh` gives you the local repo and the first commit; the section below gets it onto GitHub and turns on automatic backup from the desktop. Do that first — the phone is a clone of it.
 
-## Setup
+## Desktop first: private remote + automatic backup
+
+### 1. Create the remote, empty
+On [github.com/new](https://github.com/new): name it, set **Private**, and do **not** add a README, `.gitignore` or licence. It has to start empty or your first push collides with it.
+
+### 2. Push once from the terminal
+```
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git push -u origin main
+```
+Cloning this template needed no login because it is public. Pushing to *your* repo does, and GitHub no longer accepts your account password for it — you need a token (next section). On Windows, Git Credential Manager usually opens a browser sign-in instead and you can skip ahead; on macOS the terminal asks for a username and password, and the password is the token.
+
+### 3. Turn on automatic backup in Obsidian
+Install the **Obsidian Git** community plugin, then Settings → Git:
+- **Auto commit-and-sync** every 10 minutes — this is the backup
+- **Pull on startup** ON — this is what makes a second device sane
+- **Author name** and **author email**: use your GitHub noreply address (`<id>+<user>@users.noreply.github.com`, in Settings → Emails) if you would rather not put your real one in every commit
+
+That is the whole desktop setup. Your notes now save themselves while Obsidian is open, with full history, in a repo only you can read.
+
+> Keep the token in a password manager, not in a note. The starter's `.gitignore` already excludes `.obsidian/plugins/`, which is where the plugin stores it, so it never reaches git.
+
+## Setup for the phone
 
 ### 1. GitHub fine-grained PAT
 Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → Generate new:
