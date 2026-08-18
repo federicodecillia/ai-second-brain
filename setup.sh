@@ -419,8 +419,20 @@ if ! $QUICK; then
   read -r -p 'Make this your own private repo? Removes the template git remote + dev/CI infra. [Y/n]: ' DETACH || true
   if [[ "${DETACH:-Y}" == [Yy] ]]; then
     rm -rf .git scripts .github
-    git init -q
+    git init -q -b main 2>/dev/null || { git init -q; git branch -m main 2>/dev/null || true; }
     echo "  detached: removed template dev/CI infra (scripts/, .github/) and initialized a fresh git repo."
+    # First commit right away: a vault with no history has no restore point, and
+    # publishing later (here or by hand) needs one.
+    git add -A
+    if git commit -qm "init: my second brain" >/dev/null 2>&1; then
+      echo "  first commit done on 'main' — that is your restore point."
+    else
+      echo "  NOTE: could not create the first commit. Usually git does not know who you are yet."
+      echo "        Run these three lines, then you are done:"
+      echo "          git config --global user.name \"Your Name\""
+      echo "          git config --global user.email \"you@example.com\""
+      echo "          git add -A && git commit -m \"init: my second brain\""
+    fi
   else
     echo "  kept the template remote + dev/CI infra (you can pull upstream updates and run the smoke test)."
   fi
