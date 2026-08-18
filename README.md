@@ -35,6 +35,7 @@ Clone and personalize, install two Obsidian plugins, open the vault with your ag
 ```
 git clone https://github.com/federicodecillia/ai-second-brain.git my-second-brain && cd my-second-brain && ./setup.sh
 ```
+**macOS / Linux:** any terminal. **Windows:** run it in **Git Bash** (ships with [Git for Windows](https://git-scm.com)), not PowerShell or CMD — `setup.sh` is a shell script. Everything after this step is identical on all three.
 `setup.sh` asks **personal or company/team**, fills in your name(s), language and areas, detaches the vault into your own fresh git repo, and (if you want) publishes it to GitHub for you (`gh repo create`, private by default).
 In a hurry? `./setup.sh --quick` skips every question and gives you a working vault now; re-run it anytime to personalize. Want richer context? Skip the form and let your agent **interview you** instead — both paths are in [docs/onboarding.md](docs/onboarding.md).
 
@@ -47,7 +48,7 @@ Open the folder as a vault (Obsidian → *Open folder as vault*). Then turn on t
 A freshly cloned vault downloads these but does **not** auto-enable them, so flip them on yourself. Exactly which plugin powers what, plus the "my views show raw code" fix: [docs/plugin-setup.md](docs/plugin-setup.md).
 
 ### 3. Open it with your agent (1 min)
-Open the vault in Claude Code, Codex, or Gemini / Antigravity and ask *"What is the structure of this vault?"*. You should get a clean PARA answer. From there you just talk to it (see the examples above). How one `AGENTS.md` keeps all three agents in sync: [docs/multi-agent-setup.md](docs/multi-agent-setup.md).
+Open the vault in Claude Code, Codex, or Gemini / Antigravity and ask *"What is the structure of this vault?"*. You should get a clean PARA answer. Start the agent **from inside the vault folder** — that is how it finds `AGENTS.md`, the rulebook it reads before touching anything. From there you just talk to it (see the examples above). How one `AGENTS.md` keeps all three agents in sync: [docs/multi-agent-setup.md](docs/multi-agent-setup.md).
 
 ### 4. Turn on autopilot (optional, 2 min)
 Drop anything into `00_Inbox/` and let a scheduled run sort it. Tell your agent *"set up a scheduled task that runs maintenance.md every Sunday at 08:00"* and it files the inbox, writes a weekly digest to `digest.md`, and health-checks the vault, unattended. Cadence, a local-cron path for any agent, and the read-only safety rule: [docs/automation.md](docs/automation.md).
@@ -77,6 +78,8 @@ AGENTS.md (+CLAUDE.md/GEMINI.md)  hub.md  routines.md  dashboard.md  index.md  M
 maintenance.md (autopilot routine)  digest.md (its output)  setup.sh  docs/
 ```
 Plus an example project showing the conventions, six universal note templates, and a smoke-tested setup (CI runs the full new-user flow on every change).
+
+**Requirements:** git, an agent CLI (Claude Code / Codex / Gemini), and Obsidian to read the vault. Nothing else — no database, no runtime, no account. Works on macOS, Linux and Windows (Git Bash).
 
 ## Customize / go pro
 Adapt areas and templates to your field: `docs/customization.md`.

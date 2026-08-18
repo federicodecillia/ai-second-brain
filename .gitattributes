@@ -1,0 +1,8 @@
+# Shell scripts must keep LF endings. Git for Windows defaults to core.autocrlf=true,
+# and a setup.sh checked out with CRLF fails in Git Bash with errors like
+# "$'\r': command not found" before it runs a single line.
+*.sh text eol=lf
+
+# Vault content is plain markdown shared across machines and phones: normalize it.
+*.md text eol=lf
+* text=auto

@@ -1,5 +1,14 @@
 # Onboarding — 15 minutes to a working second brain
 
+## Before you start
+You need three things: **git**, an **agent CLI** (Claude Code, Codex or Gemini), and **Obsidian** to read the vault.
+
+- **macOS:** typing `git --version` in Terminal offers to install the Xcode command line tools. Accept — it can take several minutes, so start it first.
+- **Windows:** install [Git for Windows](https://git-scm.com), then run every command below in **Git Bash**, not PowerShell or CMD. `setup.sh` is a shell script.
+- **Linux:** your package manager's `git`.
+
+Check you are ready: `git --version` answers, and your agent answers too (`codex --version`, `claude --version`, …).
+
 You have two ways to personalize the vault. Pick one.
 
 - **Fast (form):** run `./setup.sh` and answer a few prompts. Best if you just want it working.
@@ -34,7 +43,7 @@ PARA is the framework; the areas are yours. Create a folder in `02_Areas/` only 
 See `02_Areas/_README.md` for more.
 
 ## 3. Set up Obsidian (2 min)
-Open the folder as a vault. Install Tasks + Dataview and enable core Templates (see `docs/plugin-setup.md`). Open `dashboard.md` and confirm the task views render (they show 0 tasks until you add some).
+Obsidian is the same on every OS. Open the folder as a vault. Install Tasks + Dataview and enable core Templates (see `docs/plugin-setup.md`). Open `dashboard.md` and confirm the task views render (they show 0 tasks until you add some).
 
 Want the vault on your phone? `docs/mobile-sync.md` sets up free git-based sync to Obsidian iOS (no Obsidian Sync subscription).
 
